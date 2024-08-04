@@ -97,10 +97,12 @@
         function appendNumber(number) {
             const pinInput = document.getElementById('pinInput');
             pinInput.value += number;
+            generateKeypad(); // Shuffle keypad after each input
         }
 
         function clearInput() {
             document.getElementById('pinInput').value = '';
+            generateKeypad(); // Shuffle keypad when cleared
         }
 
         function checkPIN() {
@@ -115,7 +117,6 @@
                 errorMessage.style.display = 'block';
                 protectedContent.style.display = 'none';
                 clearInput();
-                generateKeypad();
             }
         }
 
