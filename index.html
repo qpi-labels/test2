@@ -15,25 +15,85 @@
             align-items: center;
             height: 100vh;
             background-color: #f0f0f0;
+            margin: 0;
         }
         .container {
             background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        #pinInput {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            pointer-events: none; /* Disable direct typing */
+        }
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .keypad button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .keypad button:hover {
+            background-color: #45a049;
+        }
+        #error-message {
+            color: red;
+            display: none;
+            margin-top: 10px;
         }
         .hidden-content {
             display: none;
+        }
+        .hidden-content h2 {
+            margin-top: 20px;
+            color: #4CAF50;
+        }
+        .hidden-content p {
+            font-size: 18px;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Enter PIN Code</h1>
-        <input type="password" id="pinInput" placeholder="Enter PIN" />
-        <button onclick="checkPIN()">Submit</button>
-        <p id="error-message" style="color: red; display: none;">Incorrect PIN. Please try again.</p>
+        <input type="password" id="pinInput" placeholder="Enter PIN" readonly />
+        <div class="keypad">
+            <button onclick="appendNumber(1)">1</button>
+            <button onclick="appendNumber(2)">2</button>
+            <button onclick="appendNumber(3)">3</button>
+            <button onclick="appendNumber(4)">4</button>
+            <button onclick="appendNumber(5)">5</button>
+            <button onclick="appendNumber(6)">6</button>
+            <button onclick="appendNumber(7)">7</button>
+            <button onclick="appendNumber(8)">8</button>
+            <button onclick="appendNumber(9)">9</button>
+            <button onclick="clearInput()">C</button>
+            <button onclick="appendNumber(0)">0</button>
+            <button onclick="checkPIN()">OK</button>
+        </div>
+        <p id="error-message">Incorrect PIN. Please try again.</p>
         
         <div id="protected-content" class="hidden-content">
             <h2>Welcome!</h2>
@@ -42,6 +102,15 @@
     </div>
 
     <script>
+        function appendNumber(number) {
+            const pinInput = document.getElementById('pinInput');
+            pinInput.value += number;
+        }
+
+        function clearInput() {
+            document.getElementById('pinInput').value = '';
+        }
+
         function checkPIN() {
             const correctPIN = "0000";
             const userPIN = document.getElementById('pinInput').value;
@@ -54,6 +123,7 @@
             } else {
                 errorMessage.style.display = 'block';
                 protectedContent.style.display = 'none';
+                clearInput();
             }
         }
     </script>
