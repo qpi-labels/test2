@@ -14,14 +14,14 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
+            background-color: #e0e0e0;
             margin: 0;
         }
         .container {
-            background-color: white;
+            background-color: #e0e0e0;
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            box-shadow: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
             text-align: center;
             max-width: 400px;
             width: 100%;
@@ -38,13 +38,13 @@
         }
         .pin-box {
             width: 20%;
-            padding: 15px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            height: 50px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #e0e0e0;
+            box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
             font-size: 24px;
             text-align: center;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-            height: 50px;
         }
         .keypad {
             display: grid;
@@ -52,16 +52,17 @@
             gap: 10px;
         }
         .keypad button {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #e0e0e0;
+            color: #333;
             border: none;
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 10px;
             font-size: 16px;
             cursor: pointer;
+            box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
         }
         .keypad button:hover {
-            background-color: #45a049;
+            background-color: #d4d4d4;
         }
         #error-message {
             color: red;
