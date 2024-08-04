@@ -96,8 +96,14 @@
 
         function appendNumber(number) {
             const pinInput = document.getElementById('pinInput');
-            pinInput.value += number;
-            generateKeypad(); // Shuffle keypad after each input
+            if (pinInput.value.length < 4) {
+                pinInput.value += number;
+                generateKeypad(); // Shuffle keypad after each input
+
+                if (pinInput.value.length === 4) {
+                    checkPIN();
+                }
+            }
         }
 
         function clearInput() {
@@ -143,11 +149,6 @@
             clearButton.textContent = 'C';
             clearButton.onclick = clearInput;
             keypadContainer.appendChild(clearButton);
-
-            const okButton = document.createElement('button');
-            okButton.textContent = 'OK';
-            okButton.onclick = checkPIN;
-            keypadContainer.appendChild(okButton);
         }
 
         generateKeypad();
